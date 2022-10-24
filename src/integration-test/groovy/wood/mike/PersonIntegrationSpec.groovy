@@ -20,6 +20,13 @@ class PersonIntegrationSpec extends Specification{
         and:
             people.frank.forename == 'Frank'
             people.frank.addresses[0].addressLine1 == 'The moon'
+        and:
+            people.arnold.surname == 'Schwarzenegger'
+            people.arnold.pets*.name.containsAll( 'Bugs', 'Mo' )
+        and:
+            Address.findByAddressLine1('The shire')
+            people.bob.forename == 'Bob'
+            people.bob.addresses[0].addressLine1 == 'The shire'
     }
 
     /**

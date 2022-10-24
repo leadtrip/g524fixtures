@@ -15,4 +15,16 @@ class Person {
         surname nullable: false
         dob nullable: false
     }
+
+
+    @Override
+    String toString() {
+        return "Person{" +
+                "forename='" + forename + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dob=" + dob +
+                ", pets=" + pets +
+                ", addresses=" + addresses +
+                '}';
+    }
 }

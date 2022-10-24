@@ -39,8 +39,7 @@ gina(Book, title: "Groovy In Action") {
 }
 ----
 
-
-= Specifying Relationships
+== Specifying Relationships
 
 A key benefit to using the fixtures plugin is that it makes specifying related objects simple and concise.
 
@@ -65,7 +64,7 @@ b(Book, title: "The Fellowship of the Ring")
 a(Author, name: "J.R.R. Tolkien", books: [b])
 ----
 
-In this example, @b@ must be defined before it is referenced by @a@. To reference @b@ before it is defined, the special @ref(«name»)@ method can be used...
+In this example, `b` must be defined before it is referenced by `a`. To reference `b` before it is defined, the special `ref(«name»)` method can be used...
 
 [groovy]
 ----
