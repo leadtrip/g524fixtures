@@ -42,4 +42,12 @@ class PersonIntegrationSpec extends Specification{
             fixture.nigel.surname != null
             fixture.nigel.dob != null
     }
+
+    void "test pre and post processing"() {
+        when:
+            def pAndp = fixtureLoader.load( 'preAndPost' )
+            def jeff = pAndp.jeff
+        then:
+            jeff.addresses[0].addressLine1 == 'The twilight zone'
+    }
 }

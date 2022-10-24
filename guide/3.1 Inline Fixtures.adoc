@@ -1,4 +1,5 @@
-{code}
+[,groovy]
+----
 def fixture = fixtureLoader.load {
   guillaume(Author) {
     name = "Guillaume Laforge"
@@ -11,4 +12,4 @@ def fixture = fixtureLoader.load {
     authors = [guillaume, dierk]
   }
 }
-{code}
+---

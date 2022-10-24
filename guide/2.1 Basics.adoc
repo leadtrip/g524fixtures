@@ -1,14 +1,14 @@
 A single object is defined as follows...
 
-[groovy]
+[,groovy]
 ----
 gina(Book, title: "Groovy In Action")
 ----
-This is defining an object named @gina@, of type @Book@ with the @title@ property set to @"Groovy In Action"@.
+This is defining an object named `gina`, of type `Book` with the `title` property set to `"Groovy In Action"`.
 
 An alternative syntax is...
 
-[groovy]
+[,groovy]
 ----
 gina(Book) {
     title =  "Groovy In Action"
@@ -17,14 +17,14 @@ gina(Book) {
 
 These two syntaxes effectively achieve the same thing. The difference is that the first example is equivalent to...
 
-[groovy]
+[,groovy]
 ----
 def gina = new Book(title: "Groovy In Action")
 ----
 
 While the second (alternative) syntax is equivalent to...
 
-[groovy]
+[,groovy]
 ----
 def gina = new Book()
 gina.title = "Groovy In Action"
@@ -32,20 +32,20 @@ gina.title = "Groovy In Action"
 
 The two can even be mixed...
 
-[groovy]
+[,groovy]
 ----
 gina(Book, title: "Groovy In Action") {
     isbn = "123456778"
 }
 ----
 
-== Specifying Relationships
+=== Specifying Relationships
 
 A key benefit to using the fixtures plugin is that it makes specifying related objects simple and concise.
 
 Consider the following GORM domain classes:
 
-[groovy]
+[,groovy]
 ----
 class Author {
     static hasMany = [books: Book]
@@ -58,7 +58,7 @@ class Book {
 
 We can specify an Author/Book relationship like so...
 
-[groovy]
+[,groovy]
 ----
 b(Book, title: "The Fellowship of the Ring")
 a(Author, name: "J.R.R. Tolkien", books: [b])
@@ -66,7 +66,7 @@ a(Author, name: "J.R.R. Tolkien", books: [b])
 
 In this example, `b` must be defined before it is referenced by `a`. To reference `b` before it is defined, the special `ref(«name»)` method can be used...
 
-[groovy]
+[,groovy]
 ----
 a(Author, name: "J.R.R. Tolkien", books: [ref("b")])
 b(Book, title: "The Fellowship of the Ring")
@@ -74,7 +74,7 @@ b(Book, title: "The Fellowship of the Ring")
 
 If the relationship is bidirectional, it can be set on either side...
 
-[groovy]
+[,groovy]
 ----
 a(Author, name: "J.R.R. Tolkien")
 b(Book, title: "The Fellowship of the Ring", author: a)
@@ -82,15 +82,15 @@ b(Book, title: "The Fellowship of the Ring", author: a)
 
 For one-to-many associations, you can also use a nested syntax with version 1.2 of the plugin and above that reduces the verbosity of the fixture data and improves readabililty. So the previous examples can now be written like:
 
-[groovy]
+[,groovy]
 ----
 a(Author, name: "J.R.R. Tolkien", books: [
    new Book(title: "The Fellowship of the Ring") ])
 ----
 
-You can nest to arbitrary depths too. Imagine that a book can have many @Label@ instances:
+You can nest to arbitrary depths too. Imagine that a book can have many `Label` instances:
 
-[groovy]
+[,groovy]
 ----
 a(Author, name: "J.R.R. Tolkien", books: [
    new Book(title: "The Fellowship of the Ring", labels: [
@@ -99,4 +99,4 @@ a(Author, name: "J.R.R. Tolkien", books: [
    new Book(title: "The Two Towers")])
 ----
 
-Simply nest new instances of the appropriate type for the collection, e.g. @Book@ for the @books@ property.
+Simply nest new instances of the appropriate type for the collection, e.g. `Book` for the `books` property.
